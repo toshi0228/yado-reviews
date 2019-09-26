@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+       <!-- Compiled and minified CSS -->
+  
+
+  <!-- Compiled and minified JavaScript -->
+
+  
+  
+  </head>
+
+  <body>
+    <nav class= "212121 grey darken-4">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">blog</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+          <li><a href="/users/<%= current_user.id %>">マイページ</a></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li><a class="POST", href="/tops/new">投稿する</a></li>
+        <% else %>
+          <li><%= link_to "ログイン", user_session_path  %></li>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+    
+    
+    <%= yield %>
+    
+    
+  </body>
+  
+  
+
+</html>

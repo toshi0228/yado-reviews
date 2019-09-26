@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>練習</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css">
+<link href="css/css.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!--<div class="container">-->
+    <div class="row">
+      <div class="col s7">
+        <% @yados.each do |yado| %>
+          <div class="card">
+            <div class="card-image">
+              <%= image_tag yado.image %>
+              <span class="card-title"><p><%= yado.name %></p></span>
+            </div>
+            <div class="card-content">
+              <%= simple_format(yado.text)%>
+              <div class="star-ratings-sprite"><span style="width:<%= yado.rate%>%" class="star-ratings-sprite-rating"></span></div>
+            </div>
+              
+              
+              
+            <div class="card-action">
+              <%= link_to "SHOW","tops/#{yado.id}",class: "waves-effect waves-light btn teal darken-4", method: :get%>
+              <%= link_to "EDIT", "tops/#{yado.id}/edit",class: "waves-effect waves-light btn teal darken-4", method: :get%>
+              <%= link_to "DESTROY", "tops/#{yado.id}",class: "waves-effect waves-light btn teal darken-4", method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+   <!--</div> -->
+</body>
+
+
+
+
+<footer>
+<%= paginate(@yados) %>
+</footer>
+</html>

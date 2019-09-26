@@ -1,0 +1,8 @@
+<%= form_tag("/tops/#{@yado.id}", method: :patch ) do %>
+<h3>
+  編集する
+</h3>
+<input type="text", name="image" value="<%= @yado.image %>" placeholder="Image Url" autofocus="true">
+<textarea name="text" placeholder="text" zrows="10" cols="30"><%= @yado.text%></textarea>
+<input type="submit" value="SENT">
+<% end %>

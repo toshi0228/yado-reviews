@@ -1,0 +1,23 @@
+<!--<div class="image_height a" style="background-image: url(<%= @yado.image %>);">-->
+<!--</div>-->
+<img class="a" width="700px" height="400px" src="<%= @yado.image %>" />
+
+<%= simple_format(@yado.text) %>
+
+<%if current_user %>
+   <%= form_tag("/tops/#{@yado.id}/comments", method: :post) do%>
+     <textarea name="text" placeholder="コメント" rows="2" cols="30">テスト</textarea>
+     <input type="submit" value="SENT">>
+   <% end %>
+<% end %>
+
+<h4>コメント一覧</h4>
+<% if @comments %>
+   <% @comments.each do |comment| %>
+      <p>
+         <%= link_to comment.user.nickname, "/users/#{comment.user_id}"%>
+         <%= comment.text %>
+      </p>
+   <%end%>
+<%end%>
+
